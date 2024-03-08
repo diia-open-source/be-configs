@@ -1,0 +1,18 @@
+import { Describe, object, optional, string } from 'superstruct'
+
+import { MatcherResult } from '../../interfaces'
+import { assert } from '../../utils'
+import { ContextMenuSchema } from '../toBeContextMenu'
+
+import { NavigationPanel } from './interfaces'
+
+const NavigationPanelSchema: Describe<NavigationPanel> = object({
+    header: optional(string()),
+    contextMenu: optional(ContextMenuSchema),
+})
+
+export function toBeNavigationPanel(navigationPanel: NavigationPanel): MatcherResult {
+    const message = `NavigationPanel matcher`
+
+    return assert(message, navigationPanel, NavigationPanelSchema)
+}

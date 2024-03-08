@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+
+    "compilerOptions": {
+        // Need to add DOM as default lib because opentelemetry stack is leaking these types into node-specific builds
+        // https://github.com/open-telemetry/opentelemetry-js/issues/3580
+        // https://github.com/open-telemetry/opentelemetry-js/issues/3257
+        // https://github.com/open-telemetry/opentelemetry-js/issues/936
+        "lib": ["es2021", "DOM"],
+        "module": "commonjs",
+        "target": "es2021",
+        "moduleResolution": "node",
+
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "declaration": true,
+        "strict": true
+    }
+}

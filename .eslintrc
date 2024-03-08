@@ -1,0 +1,203 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "import", "jest", "todo-plz", "promise", "regexp"],
+    "extends": [
+        "eslint:recommended",
+        "airbnb-typescript/base",
+        "plugin:node/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:promise/recommended",
+        "plugin:anti-trojan-source/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:regexp/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "project": ["./tsconfig.json", "./migrations/tsconfig.json", "./tests/tsconfig.json"]
+    },
+    "ignorePatterns": ["migrations/sample-migration.ts"],
+    "rules": {
+        "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
+        "node/no-missing-import": ["off"],
+        "node/no-extraneous-import": ["off"],
+        "node/no-extraneous-require": ["off"],
+        "node/no-unpublished-import": ["off"],
+        "prettier/prettier": "error",
+        "linebreak-style": ["error", "unix"],
+        "class-methods-use-this": "off",
+        "comma-dangle": ["off"],
+        "no-duplicate-imports": "error",
+        "no-redeclare": "error",
+        "space-before-blocks": "error",
+        "space-infix-ops": "error",
+        "import/prefer-default-export": "off",
+        "import/no-extraneous-dependencies": "off",
+        "eol-last": ["error", "always"],
+        "import/order": [
+            "error",
+            {
+                "pathGroups": [
+                    {
+                        "pattern": "@diia-inhouse/diia-app",
+                        "group": "external",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@diia-inhouse/**",
+                        "group": "external",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@src/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@actions/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@services/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@providers/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@models/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@dataMappers/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@utils",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@utils/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@mocks/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@tests/**",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@interfaces/**",
+                        "group": "internal",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": [],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "import/newline-after-import": ["error"],
+        "newline-before-return": ["error"],
+        "no-cond-assign": ["error", "always"],
+        "no-console": "error",
+        "lines-between-class-members": "off",
+        "consistent-return": ["off"],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            },
+            {
+                "blankLine": "always",
+                "prev": ["const", "let"],
+                "next": "*"
+            },
+            {
+                "blankLine": "any",
+                "prev": ["const", "let"],
+                "next": "block-like"
+            },
+            {
+                "blankLine": "any",
+                "prev": ["const", "let"],
+                "next": ["const", "let"]
+            },
+            {
+                "blankLine": "always",
+                "prev": "block-like",
+                "next": "*"
+            },
+            {
+                "blankLine": "never",
+                "prev": "case",
+                "next": "*"
+            },
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "export"
+            }
+        ],
+        "object-curly-newline": ["off"],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": ["_id"]
+            }
+        ],
+        "@typescript-eslint/consistent-type-assertions": [
+            "error",
+            {
+                "assertionStyle": "angle-bracket"
+            }
+        ],
+        "@typescript-eslint/typedef": "off",
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+        "no-return-await": "off",
+        "@typescript-eslint/return-await": ["error", "always"],
+        "curly": ["error", "all"],
+        "@typescript-eslint/array-type": ["error"],
+
+        "jest/no-conditional-in-test": "error",
+        "jest/no-duplicate-hooks": "error",
+        "jest/prefer-hooks-in-order": "error",
+        "jest/prefer-hooks-on-top": "error",
+        "jest/prefer-lowercase-title": ["error", { "ignoreTopLevelDescribe": true }],
+        "jest/require-to-throw-message": "error",
+        "jest/require-top-level-describe": "error",
+
+        "eqeqeq": ["error", "always"],
+        "spaced-comment": ["error", "always"],
+        "todo-plz/ticket-ref": ["error", { "pattern": "BACK-[0-9]+" }],
+        "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
+        "@typescript-eslint/no-inferrable-types": "error",
+        "sort-imports": [
+            "error",
+            {
+                "allowSeparatedGroups": true,
+                "ignoreDeclarationSort": true
+            }
+        ],
+        "regexp/no-obscure-range": "off"
+    }
+}
