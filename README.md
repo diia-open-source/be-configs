@@ -26,7 +26,7 @@ This repository contains the package with shared node.js configurations.
 Example:
 
 ```
-git clone https://github.com/diia-open-source/configs.git
+git clone https://github.com/diia-open-source/be-configs.git configs
 ```
 
 ---

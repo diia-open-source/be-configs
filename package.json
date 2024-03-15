@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "1.27.1",
+    "version": "1.27.2",
     "description": "Shared node.js configurations",
     "repository": {
         "type": "git",
