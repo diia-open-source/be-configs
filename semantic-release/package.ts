@@ -11,6 +11,7 @@ export const plugins = [
         },
     ],
     '@semantic-release/release-notes-generator',
+    '@semantic-release/gitlab',
     '@semantic-release/npm',
     [
         '@semantic-release/git',

@@ -5,22 +5,25 @@ import { JestConfigWithTsJest, pathsToModuleNameMapper } from 'ts-jest'
 
 import { setCoverageConfig } from './utils'
 
-const moduleNameMapper = pathsToModuleNameMapper({
-    '@services/*': [resolve('src/services/*')],
-    '@providers/*': [resolve('src/providers/*')],
-    '@interfaces/*': [resolve('src/interfaces/*')],
-    '@models/*': [resolve('src/models/*')],
-    '@dataMappers/*': [resolve('src/dataMappers/*')],
-    '@utils/*': [resolve('src/utils/*')],
-    '@xmlMappings/*': [resolve('src/xmlMappings/*')],
-    '@actions/*': [resolve('src/actions/*')],
-    '@pages/*': [resolve('src/pages/*')],
-    '@src/*': [resolve('src/*')],
-    '@tests/*': [resolve('tests/*')],
-    '@mocks/*': [resolve('tests/mocks/*')],
-    '@validation/*': [resolve('src/validation/*')],
-    '@generated/*': [resolve('src/generated/*')],
-})
+const moduleNameMapper = pathsToModuleNameMapper(
+    {
+        '@services/*': [resolve('src/services/*')],
+        '@providers/*': [resolve('src/providers/*')],
+        '@interfaces/*': [resolve('src/interfaces/*')],
+        '@models/*': [resolve('src/models/*')],
+        '@dataMappers/*': [resolve('src/dataMappers/*')],
+        '@utils/*': [resolve('src/utils/*')],
+        '@xmlMappings/*': [resolve('src/xmlMappings/*')],
+        '@actions/*': [resolve('src/actions/*')],
+        '@pages/*': [resolve('src/pages/*')],
+        '@src/*': [resolve('src/*')],
+        '@tests/*': [resolve('tests/*')],
+        '@mocks/*': [resolve('tests/mocks/*')],
+        '@validation/*': [resolve('src/validation/*')],
+        '@generated/*': [resolve('src/generated/*')],
+    },
+    { useESM: true },
+)
 
 const matchersExtend = resolve(__dirname, './setupMatchers.js')
 

@@ -11,6 +11,7 @@ export = {
             },
         ],
         '@semantic-release/release-notes-generator',
+        '@semantic-release/gitlab',
         ['@semantic-release/npm', { npmPublish: false }],
         [
             '@saithodev/semantic-release-backmerge',

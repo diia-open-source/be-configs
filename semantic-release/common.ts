@@ -1,1 +1,4 @@
-export const releaseRules = [{ type: 'bump', release: 'patch' }]
+export const releaseRules = [
+    { type: 'refactor', release: 'patch' },
+    { type: 'chore', release: 'patch' },
+]

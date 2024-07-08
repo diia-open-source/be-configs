@@ -6,7 +6,6 @@ import { MatcherResult } from './interfaces'
 
 export function setCoverageConfig(): JestConfigWithTsJest {
     const { selectProjects, coverage } = parser(process.argv, { array: ['selectProjects'] })
-
     if (!coverage) {
         return {}
     }
