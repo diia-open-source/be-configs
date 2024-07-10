@@ -1,4 +1,4 @@
-import { releaseRules } from './common'
+import { gitPlugin, releaseRules } from './common'
 
 export = {
     branches: ['master', { name: 'dev', channel: 'rc', prerelease: 'rc' }],
@@ -13,6 +13,7 @@ export = {
         '@semantic-release/release-notes-generator',
         '@semantic-release/gitlab',
         ['@semantic-release/npm', { npmPublish: false }],
+        gitPlugin,
         [
             '@saithodev/semantic-release-backmerge',
             {

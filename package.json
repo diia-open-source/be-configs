@@ -1,13 +1,12 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "1.32.0",
+    "version": "1.33.0",
     "description": "Shared node.js configurations",
     "repository": {
         "type": "git",
         "url": "https://github.com/diia-open-source/be-configs.git"
     },
     "author": "Diia",
-    "license": "SEE LICENSE IN LICENSE.md",
     "files": [
         "dist",
         "tsconfig/tsconfig.json",
@@ -84,5 +83,6 @@
     },
     "engines": {
         "node": ">=18"
-    }
+    },
+    "license": "SEE LICENSE IN LICENSE.md"
 }
