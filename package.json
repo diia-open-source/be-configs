@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "2.0.0",
+    "version": "2.2.0",
     "description": "Shared node.js configurations",
     "repository": {
         "type": "git",
@@ -13,6 +13,9 @@
         "tsconfig/tsconfig.esm.json",
         "jest/types.d.ts"
     ],
+    "engines": {
+        "node": ">=20"
+    },
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "tsc",
@@ -67,7 +70,7 @@
         "jest-junit": "16.0.0",
         "lockfile-lint": "4.14.0",
         "madge": "7.0.0",
-        "prettier": "3.3.2",
+        "prettier": "3.3.3",
         "rimraf": "6.0.0",
         "semantic-release": "24.0.0",
         "typescript": "5.3.3"
@@ -75,9 +78,6 @@
     "peerDependencies": {
         "semantic-release": "^24.0.0",
         "typescript": "^5.2.2"
-    },
-    "engines": {
-        "node": ">=20"
     },
     "license": "SEE LICENSE IN LICENSE.md"
 }
