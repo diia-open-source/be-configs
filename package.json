@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "2.2.0",
+    "version": "3.1.5",
     "description": "Shared node.js configurations",
     "repository": {
         "type": "git",
@@ -11,7 +11,8 @@
         "dist",
         "tsconfig/tsconfig.json",
         "tsconfig/tsconfig.esm.json",
-        "jest/types.d.ts"
+        "jest/types.d.ts",
+        "vitest"
     ],
     "engines": {
         "node": ">=20"
@@ -48,6 +49,7 @@
         "semantic-release-slack-bot": "4.0.2",
         "superstruct": "2.0.2",
         "ts-jest": "29.2.1",
+        "vitest": "2.1.1",
         "yargs-parser": "21.1.1"
     },
     "devDependencies": {

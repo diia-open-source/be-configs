@@ -3,6 +3,7 @@
     "compilerOptions": {
         "outDir": "dist",
         "sourceMap": false,
+        "skipLibCheck": true,
         "declaration": false
     },
     "include": ["."]
