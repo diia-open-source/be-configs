@@ -1,4 +1,4 @@
-import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common'
+import { releaseNotesGeneratorPlugin, releaseRules } from './common'
 
 export const branches = ['main', { name: '*', prerelease: true }]
 
@@ -13,5 +13,5 @@ export const plugins = [
     releaseNotesGeneratorPlugin,
     '@semantic-release/gitlab',
     ['@semantic-release/npm', { npmPublish: false }],
-    gitPlugin,
+    '@semantic-release/git',
 ]

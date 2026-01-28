@@ -3,7 +3,11 @@
     "compilerOptions": {
         "baseUrl": "../",
         "noEmit": true,
-        "strict": true
+        "strict": true,
+        "types": ["vite/client", "vitest/globals"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "isolatedModules": true
     },
-    "include": ["./**/*"]
+    "include": ["./**/*", "../vitest.config.mts"]
 }

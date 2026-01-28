@@ -6,20 +6,19 @@
         // https://github.com/open-telemetry/opentelemetry-js/issues/3580
         // https://github.com/open-telemetry/opentelemetry-js/issues/3257
         // https://github.com/open-telemetry/opentelemetry-js/issues/936
-        "lib": ["es2023", "DOM"],
-        "module": "commonjs",
+        "lib": ["es2024", "DOM"],
+        "module": "node16",
         "target": "es2022",
 
         "strict": true,
         "esModuleInterop": true,
-        "moduleResolution": "node10",
-        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node16",
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true,
-        "experimentalDecorators": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "declaration": true
+        "declaration": true,
+        "skipLibCheck": true
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "4.0.0",
+    "version": "6.1.1",
     "description": "Shared node.js configurations",
     "repository": {
         "type": "git",
@@ -11,23 +11,22 @@
         "dist",
         "tsconfig/tsconfig.json",
         "tsconfig/tsconfig.esm.json",
-        "jest/types.d.ts",
         "vitest"
     ],
     "engines": {
-        "node": ">=20"
+        "node": ">=22"
     },
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "tsc",
         "find-circulars": "madge --circular --extensions ts ./",
-        "lint": "eslint '*/**/*.{js,ts}' . && prettier --check .",
-        "lint-fix": "eslint '*/**/*.{js,ts}' . --fix && prettier --write .",
+        "lint": "eslint . && prettier --check .",
+        "lint-fix": "eslint . --fix && prettier --write .",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org --validate-https",
         "prepare": "npm run build",
         "semantic-release": "semantic-release",
-        "test": "jest",
-        "test:unit": "npm run test --selectProjects unit --"
+        "test": "vitest run",
+        "test:watch": "vitest watch"
     },
     "commitlint": {
         "extends": "./dist/commitlint"
@@ -35,62 +34,39 @@
     "release": {
         "extends": "./dist/semantic-release/package.js"
     },
-    "jest": {
-        "preset": "./dist/jest/jest-preset.js"
-    },
     "dependencies": {
-        "@commitlint/cli": "19.3.0",
-        "@commitlint/config-angular": "19.3.0",
+        "@commitlint/cli": "19.8.0",
+        "@commitlint/config-angular": "19.8.0",
         "@saithodev/semantic-release-backmerge": "4.0.1",
         "@semantic-release/git": "10.0.1",
-        "@semantic-release/gitlab": "13.2.0",
+        "@semantic-release/gitlab": "13.2.9",
+        "conventional-changelog-conventionalcommits": "8.0.0",
         "semantic-release-slack-bot": "4.0.2",
         "superstruct": "2.0.2",
-        "yargs-parser": "21.1.1"
+        "yargs-parser": "22.0.0"
     },
     "devDependencies": {
-        "@types/jest": "29.5.14",
-        "@types/nock": "11.1.0",
-        "@types/node": "20.14.10",
-        "@typescript-eslint/eslint-plugin": "7.16.0",
-        "@typescript-eslint/parser": "7.16.0",
-        "eslint": "8.57.1",
-        "eslint-config-airbnb-base": "15.0.0",
-        "eslint-config-airbnb-typescript": "18.0.0",
-        "eslint-config-prettier": "9.1.0",
-        "eslint-plugin-anti-trojan-source": "1.1.1",
-        "eslint-plugin-import": "2.31.0",
-        "eslint-plugin-jest": "28.6.0",
-        "eslint-plugin-node": "11.1.0",
-        "eslint-plugin-prettier": "5.1.3",
-        "eslint-plugin-promise": "6.4.0",
-        "eslint-plugin-regexp": "2.6.0",
-        "eslint-plugin-todo-plz": "1.3.1",
-        "jest-junit": "16.0.0",
-        "lockfile-lint": "4.14.0",
-        "madge": "7.0.0",
-        "prettier": "3.3.3",
-        "rimraf": "6.0.0",
-        "semantic-release": "24.0.0",
-        "typescript": "5.3.3"
+        "@types/conventional-changelog-writer": "4.0.11",
+        "@types/node": "24.10.0",
+        "@vitest/coverage-v8": "4.0.7",
+        "@vitest/ui": "4.0.7",
+        "eslint": "9.39.1",
+        "eslint-config-prettier": "10.1.8",
+        "eslint-plugin-unicorn": "62.0.0",
+        "lockfile-lint": "4.14.1",
+        "madge": "8.0.0",
+        "prettier": "3.6.2",
+        "rimraf": "6.1.0",
+        "semantic-release": "24.2.3",
+        "typescript": "5.9.3",
+        "typescript-eslint": "8.46.3",
+        "vite-tsconfig-paths": "5.1.4",
+        "vitest": "4.0.7",
+        "vitest-mock-extended": "3.1.0"
     },
     "peerDependencies": {
-        "jest": "^29.7.0",
         "semantic-release": "^24.0.0",
-        "typescript": "^5.2.2",
-        "ts-jest": "^29.2.1",
-        "vitest": "^2.1.4"
-    },
-    "peerDependenciesMeta": {
-        "jest": {
-            "optional": true
-        },
-        "ts-jest": {
-            "optional": true
-        },
-        "vitest": {
-            "optional": true
-        }
+        "typescript": "^5.7.0"
     },
     "license": "SEE LICENSE IN LICENSE.md"
 }

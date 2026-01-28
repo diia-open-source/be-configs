@@ -1,4 +1,4 @@
-import { gitPlugin, releaseRules } from './common'
+import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common'
 
 export = {
     branches: ['semantic-dummy-release', { name: 'main', channel: 'rc', prerelease: 'rc' }],
@@ -10,7 +10,7 @@ export = {
                 releaseRules,
             },
         ],
-        '@semantic-release/release-notes-generator',
+        releaseNotesGeneratorPlugin,
         '@semantic-release/gitlab',
         ['@semantic-release/npm', { npmPublish: false }],
         gitPlugin,

@@ -1,4 +1,4 @@
-import { gitPlugin, releaseRules } from './common'
+import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common'
 
 export = {
     branches: ['main'],
@@ -10,7 +10,7 @@ export = {
                 releaseRules,
             },
         ],
-        '@semantic-release/release-notes-generator',
+        releaseNotesGeneratorPlugin,
         '@semantic-release/gitlab',
         ['@semantic-release/npm', { npmPublish: false }],
         gitPlugin,
@@ -18,9 +18,9 @@ export = {
             'semantic-release-slack-bot',
             {
                 notifyOnSuccess: true,
-                notifyOnFail: true,
+                notifyOnFail: false,
                 markdownReleaseNotes: true,
-                branchesConfig: [{ pattern: 'main', notifyOnSuccess: false, notifyOnFail: false }],
+                branchesConfig: [{ pattern: 'main', notifyOnSuccess: true, notifyOnFail: false }],
             },
         ],
     ],
