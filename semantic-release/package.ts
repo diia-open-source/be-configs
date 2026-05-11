@@ -1,4 +1,4 @@
-import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common'
+import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common.js'
 
 export const branches = ['main', { name: '*', prerelease: true }]
 

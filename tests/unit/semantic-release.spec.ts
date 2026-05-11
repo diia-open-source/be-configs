@@ -7,6 +7,8 @@ import serviceConfig from '../../semantic-release/service'
 import serviceProdConfig from '../../semantic-release/service-prod'
 import serviceStageConfig from '../../semantic-release/service-stage'
 
+const pluginName = (plugin: unknown): unknown => (Array.isArray(plugin) ? plugin[0] : plugin)
+
 describe('semantic-release configurations', () => {
     describe('common', () => {
         it('should define correct release rules', () => {
@@ -41,7 +43,7 @@ describe('semantic-release configurations', () => {
             const configs = [serviceProdConfig, serviceConfig, serviceStageConfig]
 
             for (const config of configs) {
-                const pluginNames = config.plugins.map((plugin: unknown) => (Array.isArray(plugin) ? plugin[0] : plugin)) as string[]
+                const pluginNames = config.plugins.map(pluginName) as string[]
 
                 expect(pluginNames).toContain('@semantic-release/commit-analyzer')
                 expect(pluginNames).toContain('@semantic-release/gitlab')
@@ -55,7 +57,7 @@ describe('semantic-release configurations', () => {
             const configs = [packagePlugins, packageMrCiPlugins]
 
             for (const plugins of configs) {
-                const pluginNames = plugins.map((plugin) => (Array.isArray(plugin) ? plugin[0] : plugin))
+                const pluginNames = plugins.map(pluginName)
 
                 expect(pluginNames).toContain('@semantic-release/commit-analyzer')
                 expect(pluginNames).toContain('@semantic-release/gitlab')

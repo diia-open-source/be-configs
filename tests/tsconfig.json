@@ -1,13 +1,14 @@
 {
     "extends": "../tsconfig/tsconfig",
     "compilerOptions": {
-        "baseUrl": "../",
         "noEmit": true,
         "strict": true,
         "types": ["vite/client", "vitest/globals"],
         "module": "ESNext",
         "moduleResolution": "Bundler",
-        "isolatedModules": true
+        "isolatedModules": true,
+        "allowJs": true,
+        "rootDir": "../"
     },
-    "include": ["./**/*", "../vitest.config.mts"]
+    "include": ["./**/*", "../vitest.config.mts", "../commitlint/index.js"]
 }

@@ -1,17 +1,14 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "6.1.1",
+    "version": "7.0.0",
+    "type": "module",
     "description": "Shared node.js configurations",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/diia-open-source/be-configs.git"
-    },
+    "repository": "https://github.com/diia-open-source/be-configs",
     "author": "Diia",
     "files": [
+        "commitlint",
         "dist",
-        "tsconfig/tsconfig.json",
-        "tsconfig/tsconfig.esm.json",
-        "vitest"
+        "tsconfig/tsconfig.json"
     ],
     "engines": {
         "node": ">=22"
@@ -20,8 +17,8 @@
         "prebuild": "rimraf dist",
         "build": "tsc",
         "find-circulars": "madge --circular --extensions ts ./",
-        "lint": "eslint . && prettier --check .",
-        "lint-fix": "eslint . --fix && prettier --write .",
+        "lint": "oxlint && oxfmt --check .",
+        "lint-fix": "oxlint --fix && oxfmt .",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org --validate-https",
         "prepare": "npm run build",
         "semantic-release": "semantic-release",
@@ -29,7 +26,7 @@
         "test:watch": "vitest watch"
     },
     "commitlint": {
-        "extends": "./dist/commitlint"
+        "extends": "./commitlint/index.js"
     },
     "release": {
         "extends": "./dist/semantic-release/package.js"
@@ -50,23 +47,21 @@
         "@types/node": "24.10.0",
         "@vitest/coverage-v8": "4.0.7",
         "@vitest/ui": "4.0.7",
-        "eslint": "9.39.1",
-        "eslint-config-prettier": "10.1.8",
-        "eslint-plugin-unicorn": "62.0.0",
         "lockfile-lint": "4.14.1",
         "madge": "8.0.0",
-        "prettier": "3.6.2",
+        "oxfmt": "0.47.0",
+        "oxlint": "1.62.0",
+        "oxlint-tsgolint": "0.22.1",
         "rimraf": "6.1.0",
         "semantic-release": "24.2.3",
         "typescript": "5.9.3",
-        "typescript-eslint": "8.46.3",
         "vite-tsconfig-paths": "5.1.4",
         "vitest": "4.0.7",
         "vitest-mock-extended": "3.1.0"
     },
     "peerDependencies": {
-        "semantic-release": "^24.0.0",
-        "typescript": "^5.7.0"
+        "semantic-release": "^24.0.0 || ^25.0.0",
+        "typescript": "^5.7.0 || ^6.0.0"
     },
     "license": "SEE LICENSE IN LICENSE.md"
 }

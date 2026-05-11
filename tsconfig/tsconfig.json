@@ -7,12 +7,12 @@
         // https://github.com/open-telemetry/opentelemetry-js/issues/3257
         // https://github.com/open-telemetry/opentelemetry-js/issues/936
         "lib": ["es2024", "DOM"],
-        "module": "node16",
+        "module": "nodenext",
         "target": "es2022",
 
         "strict": true,
         "esModuleInterop": true,
-        "moduleResolution": "node16",
+        "moduleResolution": "nodenext",
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true,

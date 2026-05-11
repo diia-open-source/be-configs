@@ -4,8 +4,10 @@
         "outDir": "dist",
         "sourceMap": false,
         "skipLibCheck": true,
-        "declaration": false
+        "declaration": false,
+        "allowJs": true,
+        "rootDir": "./"
     },
     "include": ["."],
-    "exclude": ["node_modules", "dist", "tests"]
+    "exclude": ["node_modules", "dist", "tests", "oxlint.config.ts", "oxfmt.config.ts", "vitest.config.mts"]
 }

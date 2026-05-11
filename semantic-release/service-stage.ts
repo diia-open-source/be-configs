@@ -1,6 +1,6 @@
-import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common'
+import { gitPlugin, releaseNotesGeneratorPlugin, releaseRules } from './common.js'
 
-export = {
+export default {
     branches: ['semantic-dummy-release', { name: 'main', channel: 'rc', prerelease: 'rc' }],
     plugins: [
         [

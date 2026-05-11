@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import commitlintConfig from '../../commitlint'
+import commitlintConfig from '../../commitlint/index.js'
 
 describe('commitlint configuration', () => {
     it('should define custom type-enum rule with all required types', () => {
