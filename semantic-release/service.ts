@@ -15,7 +15,7 @@ export default {
         ['@semantic-release/npm', { npmPublish: false }],
         gitPlugin,
         [
-            '@saithodev/semantic-release-backmerge',
+            '@cleyrop-org/semantic-release-backmerge',
             {
                 backmergeBranches: [{ from: 'master', to: 'dev' }],
                 clearWorkspace: true,
