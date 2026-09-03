@@ -6,9 +6,12 @@
 #
 # Paths in `inputs:`/`out:` resolve relative to the consumer's cwd, and the plugin
 # binary resolves from node_modules/.bin (also shipped by @diia-inhouse/configs).
+#
+# strategy: all — the plugin emits one index.ts per run, so it must see every proto at once.
 version: v2
 inputs:
     - directory: proto
 plugins:
     - local: ./node_modules/.bin/protoc-gen-diia-ts
       out: proto/gen/ts
+      strategy: all
