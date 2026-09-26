@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "7.2.1",
+    "version": "7.2.2",
     "type": "module",
     "description": "Shared node.js configurations",
     "repository": "https://github.com/diia-open-source/be-configs",
