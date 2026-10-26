@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "7.2.2",
+    "version": "7.2.3",
     "type": "module",
     "description": "Shared node.js configurations",
     "repository": "https://github.com/diia-open-source/be-configs",
@@ -69,7 +69,7 @@
     },
     "peerDependencies": {
         "semantic-release": "^24.0.0 || ^25.0.0",
-        "typescript": "^5.7.0 || ^6.0.0"
+        "typescript": "^5.7.0 || ^6.0.0 || ^7.0.0"
     },
     "license": "SEE LICENSE IN LICENSE.md"
 }
