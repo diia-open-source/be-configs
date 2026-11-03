@@ -186,8 +186,12 @@ export function buildIndexBarrel(files: EmittedFile[]): string {
             const nsPath = file.name.replace(/\.ts$/, '').split('/')
             // For protos under google/ (google/api/foo, google/protobuf/foo) we
             // namespace by the last two segments — `api_foo`, `protobuf_foo` —
-            // matching genproto's output.
-            const ns = nsPath.slice(-2).join('_')
+            // matching genproto's output, including its `_` for any character an
+            // identifier cannot hold (`schema-reflection.proto` → `schema_reflection`).
+            const ns = nsPath
+                .slice(-2)
+                .join('_')
+                .replace(/[^\w$]/g, '_')
             externalLines.push(`export * as ${ns} from './${moduleRef}';`)
         }
     }

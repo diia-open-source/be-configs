@@ -40,4 +40,10 @@ describe('buildIndexBarrel', () => {
         expect(barrel).toContain("export type { GetDebtsRequest, DeepPartial, MessageFns } from './debts.js';")
         expect(barrel).toContain("export type { GetPaymentRequest } from './payment.js';")
     })
+
+    it('names the namespace of a hyphenated proto file with a valid identifier', () => {
+        const barrel = buildIndexBarrel([{ name: 'schema-reflection.ts', content: 'export const protobufPackage = "diia.schema.v1";' }])
+
+        expect(barrel).toBe("export * as schema_reflection from './schema-reflection.js';\n")
+    })
 })
