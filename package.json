@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "7.2.4",
+    "version": "7.2.5",
     "type": "module",
     "description": "Shared node.js configurations",
     "repository": "https://github.com/diia-open-source/be-configs",
@@ -44,7 +44,7 @@
         "@semantic-release/git": "10.0.1",
         "@semantic-release/gitlab": "13.3.3",
         "conventional-changelog-conventionalcommits": "8.0.0",
-        "glob": "13.0.6",
+        "glob": "14.0.2",
         "protobufjs": "7.6.6",
         "semantic-release-slack-bot": "4.0.2",
         "superstruct": "2.0.2",
