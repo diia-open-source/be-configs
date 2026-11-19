@@ -1,6 +1,6 @@
 {
     "name": "@diia-inhouse/configs",
-    "version": "7.2.5",
+    "version": "7.3.0",
     "type": "module",
     "description": "Shared node.js configurations",
     "repository": "https://github.com/diia-open-source/be-configs",
@@ -8,10 +8,12 @@
     "bin": {
         "protoc-gen-diia-ts": "./dist/protoc-gen-ts/index.js",
         "diia-buf-lint": "./buf/buf-lint.mjs",
-        "diia-buf-breaking": "./buf/buf-breaking.mjs"
+        "diia-buf-breaking": "./buf/buf-breaking.mjs",
+        "diia-clean": "./clean/clean.mjs"
     },
     "files": [
         "buf",
+        "clean",
         "commitlint",
         "dist",
         "tsconfig/tsconfig.json"
@@ -20,15 +22,14 @@
         "node": ">=22"
     },
     "scripts": {
-        "prebuild": "rimraf dist",
-        "build": "tsc",
+        "build": "node clean/clean.mjs dist && tsc",
         "find-circulars": "madge --circular --extensions ts ./",
         "lint": "oxlint && oxfmt --check .",
         "lint-fix": "oxlint --fix && oxfmt .",
         "lint:lockfile": "lockfile-lint --path package-lock.json --allowed-hosts registry.npmjs.org --validate-https",
         "prepare": "npm run build",
         "semantic-release": "semantic-release",
-        "test": "vitest run",
+        "test": "tsc --project tests/tsconfig.json --noEmit && vitest run",
         "test:watch": "vitest watch"
     },
     "commitlint": {
@@ -61,7 +62,6 @@
         "oxfmt": "0.52.0",
         "oxlint": "1.72.0",
         "oxlint-tsgolint": "0.23.0",
-        "rimraf": "6.1.3",
         "semantic-release": "25.0.9",
         "typescript": "5.9.3",
         "vitest": "4.1.11",
