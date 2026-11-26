@@ -7,7 +7,7 @@ export const plugins = [
         '@semantic-release/commit-analyzer',
         {
             preset: 'angular',
-            releaseRules,
+            releaseRules: [...releaseRules, { type: 'chore', scope: 'deps', release: false }],
         },
     ],
     releaseNotesGeneratorPlugin,

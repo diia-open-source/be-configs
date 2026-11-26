@@ -1,3 +1,4 @@
+import { analyzeCommits } from '@semantic-release/commit-analyzer'
 import { describe, expect, it } from 'vitest'
 
 import { releaseNotesGeneratorPlugin, releaseRules } from '../../semantic-release/common'
@@ -8,6 +9,23 @@ import serviceProdConfig from '../../semantic-release/service-prod'
 import serviceStageConfig from '../../semantic-release/service-stage'
 
 const pluginName = (plugin: unknown): unknown => (Array.isArray(plugin) ? plugin[0] : plugin)
+
+const commitAnalyzerConfig = (plugins: unknown[]): object => {
+    for (const plugin of plugins) {
+        if (Array.isArray(plugin) && plugin[0] === '@semantic-release/commit-analyzer') {
+            return plugin[1]
+        }
+    }
+
+    throw new Error('@semantic-release/commit-analyzer is not configured')
+}
+
+const releaseType = async (plugins: unknown[], messages: string[]): Promise<string | null> =>
+    await analyzeCommits(commitAnalyzerConfig(plugins), {
+        cwd: process.cwd(),
+        commits: messages.map((message, index) => ({ message, hash: `${index}` })),
+        logger: { log: () => {} },
+    })
 
 describe('semantic-release configurations', () => {
     describe('common', () => {
@@ -39,6 +57,17 @@ describe('semantic-release configurations', () => {
             expect(serviceStageConfig.branches).toEqual(['semantic-dummy-release', { name: 'main', channel: 'rc', prerelease: 'rc' }])
         })
 
+        it('should keep releasing a service for a dev-dependency update', async () => {
+            // Arrange
+            const plugins = serviceStageConfig.plugins
+
+            // Act
+            const release = await releaseType(plugins, ['chore(deps): update diia-inhouse'])
+
+            // Assert
+            expect(release).toBe('patch')
+        })
+
         it('should include essential plugins in all configurations', () => {
             const configs = [serviceProdConfig, serviceConfig, serviceStageConfig]
 
@@ -53,6 +82,22 @@ describe('semantic-release configurations', () => {
     })
 
     describe('package configurations', () => {
+        it.each([
+            { messages: ['chore(deps): update diia-inhouse'], expected: null },
+            { messages: ['fix(deps): update diia-inhouse'], expected: 'patch' },
+            { messages: ['chore: replace rimraf with diia-clean'], expected: 'patch' },
+            { messages: ['chore(deps): update diia-inhouse', 'feat(BACK-1): add a provider'], expected: 'minor' },
+        ])('should release $expected for $messages', async ({ messages, expected }) => {
+            // Arrange
+            const plugins = packagePlugins
+
+            // Act
+            const release = await releaseType(plugins, messages)
+
+            // Assert
+            expect(release).toBe(expected)
+        })
+
         it('should include essential plugins', () => {
             const configs = [packagePlugins, packageMrCiPlugins]
 
